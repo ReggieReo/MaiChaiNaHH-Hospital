@@ -32,6 +32,7 @@ class Patient(models.Model):
     phone_number = models.CharField(max_length=10)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    age = models.IntegerField()
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
 
 
@@ -39,13 +40,14 @@ class Accounting(models.Model):
     balance = models.FloatField()
     date = models.DateTimeField()
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    patient = models.ManyToManyField(Patient)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
 
 
 class Appointment(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     dateTime = models.DateTimeField()
+    detail = models.CharField(max_length=255)
 
 
 class Medicine(models.Model):
@@ -62,6 +64,7 @@ class Precription(models.Model):
 
 class Disease(models.Model):
     name = models.CharField(max_length=255)
+    patient = models.ManyToManyField(Patient)
 
 
 class Treatment(models.Model):
