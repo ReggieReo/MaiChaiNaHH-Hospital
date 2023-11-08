@@ -59,7 +59,12 @@ class Medicine(models.Model):
 class Precription(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    medicine = models.ManyToManyField(Medicine)
+    
+    
+class PrecriptionMedicine(models.Model):
+    medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
+    precription = models.ForeignKey(Precription, on_delete=models.CASCADE)
+    amount = models.IntegerField()
 
 
 class Disease(models.Model):
