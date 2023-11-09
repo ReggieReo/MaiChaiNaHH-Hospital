@@ -1,1 +1,8 @@
 __pycache__/
+db.sqlite3
+
+sample1.py
+sample2.py
+sample3.py
+.DS_Store
+.idea
