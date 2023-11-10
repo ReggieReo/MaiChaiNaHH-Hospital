@@ -1,0 +1,40 @@
+<link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/htmx.org@1.9.8"></script>
+<html data-theme="retro" lang="en">
+{% block content %}
+    <form>
+{#        {{ form.staff__name }}#} {# get form individually #}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone Number</th>
+            <th>Assigned Doctor</th>
+            <th>Room Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.phone_number }}</td>
+            <td>{{ patient.staff.name }}</td>
+            {% if patient.room.room_number %}
+            <td>{{ patient.room.room_number }}</td>
+            {% else %}
+            <td>Not in anyroom</td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        {{ patient.name }}
+{% endblock %}
+</html>

@@ -11,6 +11,9 @@ class Department(models.Model):
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Role(models.Model):
     name = models.CharField(max_length=255)
@@ -20,6 +23,9 @@ class Staff(models.Model):
     name = models.CharField(Role, max_length=255)
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class Patient(models.Model):
@@ -71,6 +77,9 @@ class PrecriptionMedicine(models.Model):
 class Disease(models.Model):
     name = models.CharField(max_length=255)
     patient = models.ManyToManyField(Patient)
+
+    def __str__(self):
+        return self.name
 
 
 class Treatment(models.Model):
