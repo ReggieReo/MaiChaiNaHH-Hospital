@@ -1,13 +1,31 @@
-<link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/htmx.org@1.9.8"></script>
-<html data-theme="retro" lang="en">
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+</head>
+<body>
 {% block content %}
+{% include "base.html" %}
     <form hx-get="{% url "db:index" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
-{#        {{ form.staff__name }}#} {# get form individually #}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" class="btn btn-primary"/>
+        <div class="card w-11/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title">Staff {{ form.staff__name }} Patient {{ form.name }}</h2>
+              <div class="grid grid-cols-3 gap-4">
+              <h2>Department</h2>
+              <h2>Disease</h2>
+              <h2>Room</h2>
+              <h2>{{ form.department}}</h2>
+              <h2>{{ form.disease}}</h2>
+              <h2>{{ form.room__room_number}}</h2>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-active btn-secondary ml-5 mt-3"/>
+            </div>
+          </div>
     </form>
+    <div class="flex justify-center items-center mt-5">
+        <div class="overflow-x-24 card w-full mx-6 bg-base-100 shadow-xl">
+          <div class="table-container max-h-96 overflow-y-auto rounded-lg">
     <table class="table">
         <thead>
         <tr>
@@ -21,14 +39,14 @@
         </thead>
         <tbody>
         {% for patient in patients %}
-        <tr>
-            <td>{{ patient.name }}</td>
+        <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
+            <td class="font-semibold">{{ patient.name }}</td>
             <td>{{ patient.age }}</td>
             <td>{{ patient.phone_number }}</td>
             <td>
                 {% for disease in patient.disease_set.all %}
-                {{ disease }}
-                    {% endfor %}
+                    {{ disease }}
+                {% endfor %}
             </td>
             <td>{{ patient.staff.name }}</td>
             {% if patient.room.room_number %}
@@ -36,11 +54,15 @@
             {% else %}
             <td>Not in anyroom</td>
             {% endif %}
-
         </tr>
         {% endfor %}
         </tbody>
     </table>
+            </div>
+        </div>
+    </div>
+
         {{ patient.name }}
 {% endblock %}
+</body>
 </html>

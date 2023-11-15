@@ -18,7 +18,7 @@ class PatientFilter(django_filters.FilterSet):
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
     staff__name = django_filters.CharFilter(lookup_expr="icontains", label="Doctor Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
-    room__room_number = django_filters.NumberFilter(widget=forms.RadioSelect(choices=get_room_choice()), label="Room")
+    room__room_number = django_filters.NumberFilter(widget=forms.Select(choices=get_room_choice()), label="Room")
     disease = django_filters.ModelChoiceFilter(queryset=Disease.objects.all(), label="Disease")
 
 
