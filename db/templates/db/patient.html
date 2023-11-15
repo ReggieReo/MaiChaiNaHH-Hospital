@@ -14,6 +14,7 @@
             <th>Name</th>
             <th>Age</th>
             <th>Phone Number</th>
+            <th>Disease</th>
             <th>Assigned Doctor</th>
             <th>Room Number</th>
         </tr>
@@ -24,6 +25,11 @@
             <td>{{ patient.name }}</td>
             <td>{{ patient.age }}</td>
             <td>{{ patient.phone_number }}</td>
+            <td>
+                {% for disease in patient.disease_set.all %}
+                {{ disease }}
+                    {% endfor %}
+            </td>
             <td>{{ patient.staff.name }}</td>
             {% if patient.room.room_number %}
             <td>{{ patient.room.room_number }}</td>

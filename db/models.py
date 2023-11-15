@@ -81,6 +81,9 @@ class Disease(models.Model):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        return self.name
+
 
 class Treatment(models.Model):
     name = models.CharField(max_length=255)
