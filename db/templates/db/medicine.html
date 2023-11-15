@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+</head>
+<body>
+{% block content %}
+{% include "base.html" %}
+    <form hx-get="{% url "db:medicine" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
+        <div class="card w-11/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title">Medicine {{ form.name }}</h2>
+              <div class="grid grid-cols-3 gap-4">
+              <h2>Department</h2>
+              <h2>{{ form.department}}</h2>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-active btn-secondary ml-5 mt-3"/>
+            </div>
+          </div>
+    </form>
+    <div class="flex justify-center items-center mt-5">
+        <div class="overflow-x-24 card w-full mx-6 bg-base-100 shadow-xl">
+          <div class="table-container max-h-96 overflow-y-auto rounded-lg">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for medicine in medicines %}
+        <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
+            <td class="font-semibold">{{ medicine.name }}</td>
+            <td>{{ medicine.price }}</td>
+            <td>{{ medicine.amount }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

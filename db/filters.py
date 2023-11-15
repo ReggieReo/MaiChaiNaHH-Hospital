@@ -1,6 +1,6 @@
 from django import forms
 import django_filters
-from db.models import Patient, Room, Disease
+from db.models import *
 
 # widget = forms.TextInput(attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}),
 
@@ -21,7 +21,17 @@ class PatientFilter(django_filters.FilterSet):
     room__room_number = django_filters.NumberFilter(widget=forms.Select(choices=get_room_choice()), label="Room")
     disease = django_filters.ModelChoiceFilter(queryset=Disease.objects.all(), label="Disease")
 
-
     class Meta:
         model = Patient
         fields = ["name", "staff__name", "room__room_number", "department", "disease"]
+
+
+class MedicineFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr="icontains", label="Medicine Name", widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+    department = django_filters.ModelChoiceFilter(queryset=Department.objects.all(), label="Department")
+
+    class Meta:
+        model = Medicine
+        fields = ["name", "department"]
+
