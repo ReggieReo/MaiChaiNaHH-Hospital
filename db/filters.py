@@ -45,3 +45,18 @@ class AppointmentFilter(django_filters.FilterSet):
     class Meta:
         model = Appointment
         fields = ["staff", "patient", "dateTime"]
+
+
+class AccountingFilter(django_filters.FilterSet):
+    balance = django_filters.NumberFilter(field_name="balance", label="Balance",
+                                          widget=forms.TextInput(
+                                              attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+    date = django_filters.DateFilter(field_name="date", label="Date", widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+    hospital = django_filters.ModelChoiceFilter(queryset=Hospital.objects.all(), label="Hospital")
+    patient__name = django_filters.CharFilter(lookup_expr="icontains", label="Patient's Name", widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+
+    class Meta:
+        model = Accounting
+        fields = ["balance", "date", "hospital", "patient__name"]
