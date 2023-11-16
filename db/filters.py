@@ -30,11 +30,10 @@ class PatientFilter(django_filters.FilterSet):
 class MedicineFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr="icontains", label="Medicine Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
-    department = django_filters.ModelChoiceFilter(queryset=Department.objects.all(), label="Department")
 
     class Meta:
         model = Medicine
-        fields = ["name", "department"]
+        fields = ["name"]
 
 
 class AppointmentFilter(django_filters.FilterSet):
