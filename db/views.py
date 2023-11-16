@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from db.models import Patient, Medicine, Appointment
-from db.models import Patient, Medicine, Accounting, Appointment
-from db.filters import PatientFilter, MedicineFilter, AccountingFilter, AppointmentFilter
+from db.models import *
+from db.filters import *
 
 
 # Create your views here.
@@ -64,6 +63,22 @@ class AccountingView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         self.filterset = AccountingFilter(self.request.GET, queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = self.filterset.form
+        return context
+
+
+class DiseaseView(ListView):
+    queryset = Disease.objects.all()
+    template_name = "db/disease.html"
+    context_object_name = "diseases"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset = DiseaseFilter(self.request.GET, queryset)
         return self.filterset.qs
 
     def get_context_data(self, **kwargs):

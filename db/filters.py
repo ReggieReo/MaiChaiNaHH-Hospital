@@ -59,3 +59,14 @@ class AccountingFilter(django_filters.FilterSet):
     class Meta:
         model = Accounting
         fields = ["balance", "date", "hospital", "patient__name"]
+
+
+class DiseaseFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr="icontains", label="Disease Name", widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto input-sm"}))
+    patient__name = django_filters.CharFilter(lookup_expr="icontains", label="Patient Name", widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto input-sm"}))
+
+    class Meta:
+        model = Disease
+        fields = ["name", "patient__name"]
