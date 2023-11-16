@@ -36,6 +36,12 @@ class Patient(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
     age = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
+
 
 class Room(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)

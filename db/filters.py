@@ -2,6 +2,7 @@ from django import forms
 import django_filters
 from db.models import *
 
+
 # widget = forms.TextInput(attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}),
 
 
@@ -35,3 +36,12 @@ class MedicineFilter(django_filters.FilterSet):
         model = Medicine
         fields = ["name", "department"]
 
+
+class AppointmentFilter(django_filters.FilterSet):
+    staff = django_filters.ModelChoiceFilter(queryset=Staff.objects.filter(role__name="Doctor"))
+    patient = django_filters.ModelChoiceFilter(queryset=Patient.objects.filter(appointment__isnull=False))
+    dateTime = django_filters.DateTimeFilter()
+
+    class Meta:
+        model = Appointment
+        fields = ["staff", "patient", "dateTime"]
