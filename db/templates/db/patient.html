@@ -62,9 +62,13 @@
         </div>
     </div>
     <form method="post" action="{% url 'db:create_patient' %}">
-    {% csrf_token %}
-    {{ create_form }}
-    <button type="submit">Submit</button>
+        <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+          <div class="grid grid-cols-4 gap-4">
+            {% csrf_token %}
+              {{ create_form }}
+            <button type="submit" class="btn btn-active btn-secondary ml-5 mt-3">Submit</button>
+          </div>
+        </div>
     </form>
 {% endblock %}
 </body>
