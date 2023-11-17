@@ -10,7 +10,7 @@
 <body>
 {% include "base.html" %}
     <form hx-get="{% url "db:appointment" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
-        <div class="card w-11/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
                 {{ form.as_p }}
             <input type="submit" value="Submit" class="btn btn-active btn-secondary ml-5 mt-3"/>
@@ -18,7 +18,7 @@
           </div>
     </form>
 <div class="flex justify-center items-center mt-5">
-    <div class="overflow-x-24 card w-full mx-6 bg-base-100 shadow-xl">
+    <div class="overflow-x-24 card w-9/12 mx-6 bg-base-100 shadow-xl">
         <div class="table-container max-h-96 overflow-y-auto rounded-lg">
             <table class="table">
                 <thead>

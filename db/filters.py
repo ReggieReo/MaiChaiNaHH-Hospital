@@ -51,11 +51,17 @@ class AccountingFilter(django_filters.FilterSet):
     balance = django_filters.NumberFilter(field_name="balance", label="Balance",
                                           widget=forms.TextInput(
                                               attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
-    date = django_filters.DateFilter(field_name="date", label="Date", widget=forms.TextInput(
-        attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
     hospital = django_filters.ModelChoiceFilter(queryset=Hospital.objects.all(), label="Hospital")
     patient__name = django_filters.CharFilter(lookup_expr="icontains", label="Patient's Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+    date = django_filters.DateFilter(
+        field_name="date",
+        label="Date",
+        widget=forms.DateInput(
+            attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"},
+        ),
+        input_formats=["%d-%m-%Y", "%Y-%m-%d", "%d/%m/%Y", "%Y/%m/%d"],  # Add the desired date formats
+    )
 
     class Meta:
         model = Accounting

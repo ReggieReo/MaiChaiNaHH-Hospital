@@ -8,7 +8,7 @@
 {% block content %}
 {% include "base.html" %}
     <form hx-get="{% url "db:medicine" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
-        <div class="card w-ึ/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
               <h2 class="card-title">Medicine {{ form.medicine__name }}</h2>
                 <h2 class="card-title">Department {{ form.prescription__staff__department__name }}</h2>
