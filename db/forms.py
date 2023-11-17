@@ -18,3 +18,11 @@ class PatientForm(forms.ModelForm):
         fields = ['name', 'address', 'phone_number', 'department', 'staff', 'age']
 
 
+class StaffForm(forms.ModelForm):
+
+    class Meta:
+        model = Staff
+        fields = ["name", "role", "department"]
+        labels = {
+                    'name': "Name"
+                }

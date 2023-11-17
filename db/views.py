@@ -120,6 +120,7 @@ class StaffView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = self.filterset.form
+        context["create_form"] = StaffForm()
         return context
 
 
@@ -155,3 +156,11 @@ def create_patient(request):
                 patient.disease_set.add(disease)
             print(patient.disease_set)
             return redirect('db:index')
+
+
+def create_staff(request):
+    if request.method == 'POST':
+        form = StaffForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('db:staff')
