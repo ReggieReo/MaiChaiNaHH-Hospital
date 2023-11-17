@@ -48,6 +48,12 @@
             </div>
         </div>
     </div>
+    <form hx-post="{% url "db:sum" %}" hx-target='#sum' hx-trigger="input delay:500ms, change delay:500ms">
+    {% csrf_token %}
+        {{ formsum.as_p }}
+    </form>
+    <div id="sum"></div>
 {% endblock %}
 
 </body>
+</html>

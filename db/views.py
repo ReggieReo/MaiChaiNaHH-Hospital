@@ -1,7 +1,9 @@
+from django.db.models import Sum
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from db.models import *
 from db.filters import *
+from db.forms import *
 
 
 # Create your views here.
@@ -68,6 +70,7 @@ class AccountingView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = self.filterset.form
+        context["formsum"] = BalanceSumForm()
         return context
 
 
@@ -101,3 +104,23 @@ class PrescriptionView(ListView):
         context = super().get_context_data(**kwargs)
         context["form"] = self.filterset.form
         return context
+
+
+def balance_sum_by_date_range(request):
+    if request.method == 'POST':
+        form = BalanceSumForm(request.POST)
+        if form.is_valid():
+            start_date = form.cleaned_data['start_date']
+            end_date = form.cleaned_data['end_date']
+
+            # Query the database to get the sum of balances within the date range
+            queryset = Accounting.objects.filter(date__range=(start_date, end_date))
+            balance_sum = queryset.aggregate(Sum('balance'))['balance__sum']
+            print(balance_sum)
+
+            context = {
+                'balance_sum': balance_sum,
+                'queryset': queryset,
+            }
+
+            return render(request, 'db/balance_sum_result.html', context)

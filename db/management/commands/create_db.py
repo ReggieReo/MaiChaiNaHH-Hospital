@@ -7,8 +7,6 @@ class Command(BaseCommand):
     help = 'Create sample models for the app'
 
     def handle(self, *args, **kwargs):
-        #  I can help you create some data for your Django models. Here is the code you can use in the Django shell:
-        # Create a hospital
         h = Hospital(name="Lat Yao Hospital", address="Lat Yao, Bangkok, Thailand", phone_number="021234567")
         h.save()
 

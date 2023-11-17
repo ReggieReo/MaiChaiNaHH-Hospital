@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ balance_sum }}
+<h3>Queryset within Date Range:</h3>
+<ul>
+    {% for entry in queryset %}
+        <li>{{ entry.date }} - Balance: {{ entry.balance }}</li>
+    {% endfor %}
+</ul>
+</html>
