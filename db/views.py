@@ -23,14 +23,14 @@ class PatientView(ListView):
         return context
 
 
-class MedicineView(ListView):
-    queryset = Medicine.objects.all()
+class PrescriptionMedicineView(ListView):
+    queryset = PrescriptionMedicine.objects.all()
     template_name = "db/medicine.html"
     context_object_name = "medicines"
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        self.filterset = MedicineFilter(self.request.GET, queryset)
+        self.filterset = PrescriptionMedicineFilter(self.request.GET, queryset)
         return self.filterset.qs
 
     def get_context_data(self, **kwargs):

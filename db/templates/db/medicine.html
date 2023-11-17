@@ -10,7 +10,8 @@
     <form hx-get="{% url "db:medicine" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
         <div class="card w-ึ/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
-              <h2 class="card-title">Medicine {{ form.name }}</h2>
+              <h2 class="card-title">Medicine {{ form.medicine__name }}</h2>
+                <h2 class="card-title">Department {{ form.prescription__staff__department__name }}</h2>
             <input type="submit" value="Submit" class="btn btn-active btn-secondary ml-5 mt-3"/>
             </div>
           </div>
@@ -29,9 +30,9 @@
         <tbody>
         {% for medicine in medicines %}
         <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
-            <td class="font-semibold">{{ medicine.name }}</td>
-            <td>{{ medicine.price }}</td>
-            <td>{{ medicine.amount }}</td>
+            <td class="font-semibold">{{ medicine.medicine.name }}</td>
+            <td class="font-semibold">{{ medicine.medicine.price }}</td>
+            <td class="font-semibold">{{ medicine.amount }}</td>
         </tr>
         {% endfor %}
         </tbody>

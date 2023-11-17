@@ -27,13 +27,14 @@ class PatientFilter(django_filters.FilterSet):
         fields = ["name", "staff__name", "room__room_number", "department", "disease"]
 
 
-class MedicineFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(lookup_expr="icontains", label="Medicine Name", widget=forms.TextInput(
+class PrescriptionMedicineFilter(django_filters.FilterSet):
+    medicine__name = django_filters.CharFilter(lookup_expr="icontains", label="Medicine Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+    prescription__staff__department__name = django_filters.ModelChoiceFilter(queryset=Department.objects.all())
 
     class Meta:
         model = Medicine
-        fields = ["name"]
+        fields = ["medicine__name", "prescription__staff__department__name"]
 
 
 class AppointmentFilter(django_filters.FilterSet):

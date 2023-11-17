@@ -74,9 +74,9 @@ class Prescription(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
 
 
-class PrecriptionMedicine(models.Model):
+class PrescriptionMedicine(models.Model):
     medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
-    precription = models.ForeignKey(Prescription, on_delete=models.CASCADE)
+    prescription = models.ForeignKey(Prescription, on_delete=models.CASCADE)
     amount = models.IntegerField()
 
 
