@@ -1,6 +1,7 @@
 from django import forms
 import django_filters
 from db.models import *
+from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
 
 
 # widget = forms.TextInput(attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}),
@@ -40,7 +41,7 @@ class PrescriptionMedicineFilter(django_filters.FilterSet):
 class AppointmentFilter(django_filters.FilterSet):
     staff = django_filters.ModelChoiceFilter(queryset=Staff.objects.filter(role__name="Doctor"))
     patient = django_filters.ModelChoiceFilter(queryset=Patient.objects.filter(appointment__isnull=False))
-    dateTime = django_filters.DateTimeFilter()
+    dateTime = django_filters.DateTimeFilter(widget=DatePickerInput(), lookup_expr="date")
 
     class Meta:
         model = Appointment

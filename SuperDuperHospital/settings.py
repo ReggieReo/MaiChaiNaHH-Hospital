@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "db",
     "django_filters",
+    "django_flatpickr",
 ]
 
 MIDDLEWARE = [
