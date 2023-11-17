@@ -1,5 +1,5 @@
 from django.db.models import Sum
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from db.models import *
 from db.filters import *
@@ -22,6 +22,7 @@ class PatientView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.filterset.form
+        context["create_form"] = PatientForm()
         return context
 
 
@@ -124,3 +125,17 @@ def balance_sum_by_date_range(request):
             }
 
             return render(request, 'db/balance_sum_result.html', context)
+
+
+def create_patient(request):
+    if request.method == 'POST':
+        form = PatientForm(request.POST)
+        if form.is_valid():
+            diseases = form.cleaned_data['diseases']
+            print(diseases)
+            patient = form.save(commit=False)
+            patient.save()
+            for disease in diseases:
+                patient.disease_set.add(disease)
+            print(patient.disease_set)
+            return redirect('db:index')
