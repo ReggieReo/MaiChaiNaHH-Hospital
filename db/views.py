@@ -56,7 +56,7 @@ class AppointmentView(ListView):
 
 
 class AccountingView(ListView):
-    queryset = Accounting.objects.all()
+    queryset = Accounting.objects.all().order_by("-date")
     template_name = "db/accounting.html"
     context_object_name = "accountings"
 
@@ -79,6 +79,22 @@ class DiseaseView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         self.filterset = DiseaseFilter(self.request.GET, queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = self.filterset.form
+        return context
+
+
+class PrescriptionView(ListView):
+    queryset = Prescription.objects.all()
+    template_name = "db/prescription.html"
+    context_object_name = "prescriptions"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset = PrescriptionFilter(self.request.GET, queryset)
         return self.filterset.qs
 
     def get_context_data(self, **kwargs):

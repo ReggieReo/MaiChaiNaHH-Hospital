@@ -41,7 +41,7 @@ class PrescriptionMedicineFilter(django_filters.FilterSet):
 class AppointmentFilter(django_filters.FilterSet):
     staff = django_filters.ModelChoiceFilter(queryset=Staff.objects.filter(role__name="Doctor"))
     patient = django_filters.ModelChoiceFilter(queryset=Patient.objects.filter(appointment__isnull=False))
-    dateTime = django_filters.DateTimeFilter(widget=DatePickerInput(), lookup_expr="date")
+    dateTime = django_filters.DateTimeFilter(widget=DateTimePickerInput(), lookup_expr="date")
 
     class Meta:
         model = Appointment
@@ -51,7 +51,8 @@ class AppointmentFilter(django_filters.FilterSet):
 class AccountingFilter(django_filters.FilterSet):
     balance = django_filters.NumberFilter(field_name="balance", label="Balance",
                                           widget=forms.TextInput(
-                                              attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+                                              attrs={
+                                                  "class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
     hospital = django_filters.ModelChoiceFilter(queryset=Hospital.objects.all(), label="Hospital")
     patient__name = django_filters.CharFilter(lookup_expr="icontains", label="Patient's Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
@@ -72,3 +73,12 @@ class DiseaseFilter(django_filters.FilterSet):
     class Meta:
         model = Disease
         fields = ["name", "patient__name"]
+
+
+class PrescriptionFilter(django_filters.FilterSet):
+    staff = django_filters.ModelChoiceFilter(queryset=Staff.objects.filter(prescription__isnull=False).distinct())
+    patient = django_filters.ModelChoiceFilter(queryset=Patient.objects.filter(prescription__isnull=False))
+    prescriptionmedicine__medicine__name = django_filters.CharFilter(lookup_expr="icontains", label="Medicine Name")
+    class Meta:
+        model = Prescription
+        fields = ["staff", "patient", "prescriptionmedicine__medicine__name"]

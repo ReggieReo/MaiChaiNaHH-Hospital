@@ -53,7 +53,7 @@ class Accounting(models.Model):
     balance = models.FloatField()
     date = models.DateTimeField()
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
 
 
 class Appointment(models.Model):
@@ -78,6 +78,12 @@ class PrescriptionMedicine(models.Model):
     medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
     prescription = models.ForeignKey(Prescription, on_delete=models.CASCADE)
     amount = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.medicine.name} {self.amount} units"
+
+    def __repr__(self):
+        return f"{self.medicine.name} {self.amount} units"
 
 
 class Disease(models.Model):

@@ -34,7 +34,11 @@
                     <tbody>
                     {% for account in accountings %}
                         <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
-                            <td class="font-semibold">{{ account.patient }}</td>
+                            {% if account.patient %}
+                                <td class="font-semibold">{{ account.patient }}</td>
+                            {% else %}
+                                <td class="font-semibold">Expense</td>
+                            {% endif %}
                             <td class="font-semibold">{{ account.balance }}</td>
                             <td class="font-semibold">{{ account.date }}</td>
                         </tr>
