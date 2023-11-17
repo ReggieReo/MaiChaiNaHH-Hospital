@@ -12,6 +12,7 @@ urlpatterns = [
     path("accounting", AccountingView.as_view(), name="accounting"),
     path("disease", DiseaseView.as_view(), name="disease"),
     path("prescription", PrescriptionView.as_view(), name="prescription"),
+    path("staff", StaffView.as_view(), name="staff"),
     path("sum", balance_sum_by_date_range, name="sum"),
     path("create_patient", create_patient, name="create_patient"),
 ]

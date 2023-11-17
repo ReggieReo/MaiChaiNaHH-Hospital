@@ -107,6 +107,22 @@ class PrescriptionView(ListView):
         return context
 
 
+class StaffView(ListView):
+    queryset = Staff.objects.all()
+    template_name = "db/staff.html"
+    context_object_name = "staffs"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset = StaffFilter(self.request.GET, queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = self.filterset.form
+        return context
+
+
 def balance_sum_by_date_range(request):
     if request.method == 'POST':
         form = BalanceSumForm(request.POST)

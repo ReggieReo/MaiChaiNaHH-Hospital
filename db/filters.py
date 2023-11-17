@@ -79,6 +79,14 @@ class PrescriptionFilter(django_filters.FilterSet):
     staff = django_filters.ModelChoiceFilter(queryset=Staff.objects.filter(prescription__isnull=False).distinct())
     patient = django_filters.ModelChoiceFilter(queryset=Patient.objects.filter(prescription__isnull=False))
     prescriptionmedicine__medicine__name = django_filters.CharFilter(lookup_expr="icontains", label="Medicine Name")
+
     class Meta:
         model = Prescription
         fields = ["staff", "patient", "prescriptionmedicine__medicine__name"]
+
+
+class StaffFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr="icontains", label="Name")
+    class Meta:
+        model = Staff
+        fields = ["name", "role", "department"]
