@@ -128,9 +128,9 @@ class Command(BaseCommand):
         m3.save()
         m4 = Medicine(name="Amoxicillin", price=40, amount=100)  # Flu
         m4.save()
-        m5 = Medicine(name="Ciprofloxacin", price=50, amount=100)
+        m5 = Medicine(name="Ciprofloxacin", price=50, amount=100)  # Antibiotic
         m5.save()
-        m6 = Medicine(name="Metronidazole", price=60, amount=100)
+        m6 = Medicine(name="Metronidazole", price=60, amount=100)  # Antibiotic
         m6.save()
         m7 = Medicine(name="Benralizumab", price=70, amount=100)  # Asthma
         m7.save()
@@ -138,27 +138,27 @@ class Command(BaseCommand):
         m8.save()
         m9 = Medicine(name="Simvastatin", price=90, amount=100)  # Hypertension
         m9.save()
-        m10 = Medicine(name="Atorvastatin", price=100, amount=100)
+        m10 = Medicine(name="Atorvastatin", price=100, amount=100)  # Diabete(New)
         m10.save()
         m11 = Medicine(name="Metformin", price=110, amount=100)  # Diabete
         m11.save()
-        m12 = Medicine(name="Gliclazide", price=120, amount=100)
+        m12 = Medicine(name="Gliclazide", price=120, amount=100)  # Diabete (New)
         m12.save()
-        m13 = Medicine(name="Amlodipine", price=130, amount=100)
+        m13 = Medicine(name="Amlodipine", price=130, amount=100)  # Hypertension(New)
         m13.save()
-        m14 = Medicine(name="Losartan", price=140, amount=100)
+        m14 = Medicine(name="Losartan", price=140, amount=100)  # Hypertension(New)
         m14.save()
         m15 = Medicine(name="Bromhexine", price=150, amount=100)  # Flu
         m15.save()
-        m16 = Medicine(name="Salbutamol", price=160, amount=100)
+        m16 = Medicine(name="Salbutamol", price=160, amount=100)  # Asthma(new)
         m16.save()
         m17 = Medicine(name="Prednisolone", price=170, amount=100)
         m17.save()
         m18 = Medicine(name="Levothyroxine", price=180, amount=100)
         m18.save()
-        m19 = Medicine(name="Warfarin", price=190, amount=100)
+        m19 = Medicine(name="Prenapril", price=190, amount=100)  # Alzhimer
         m19.save()
-        m20 = Medicine(name="Clopidogrel", price=200, amount=100)
+        m20 = Medicine(name="Brexpiprazole", price=200, amount=100)  # Alzhimer
         m20.save()
 
         # Create 3 diseases with real disease names
@@ -208,17 +208,29 @@ class Command(BaseCommand):
         pr4.save()
         pr5 = Prescription(staff=s4, patient=p10)
         pr5.save()
+        pr6 = Prescription(staff=s1, patient=p1)
+        pr6.save()
+        pr7 = Prescription(staff=s1, patient=p2)
+        pr7.save()
+        pr8 = Prescription(staff=s1, patient=p3)
+        pr8.save()
 
         # Create 10 relation 
-        pc1 = PrecriptionMedicine.objects.create(medicine=m9, precription=pr1, amount=30)
-        pc2 = PrecriptionMedicine.objects.create(medicine=m11, precription=pr2, amount=90)
-        pc3 = PrecriptionMedicine.objects.create(medicine=m7, precription=pr3, amount=50)
-        pc4 = PrecriptionMedicine.objects.create(medicine=m1, precription=pr4, amount=21)
-        pc5 = PrecriptionMedicine.objects.create(medicine=m4, precription=pr4, amount=7)
-        pc6 = PrecriptionMedicine.objects.create(medicine=m15, precription=pr4, amount=20)
-        pc7 = PrecriptionMedicine.objects.create(medicine=m1, precription=pr5, amount=21)
-        pc8 = PrecriptionMedicine.objects.create(medicine=m4, precription=pr5, amount=7)
-        pc9 = PrecriptionMedicine.objects.create(medicine=m15, precription=pr5, amount=20)
+        pc1 = PrescriptionMedicine.objects.create(medicine=m9, prescription=pr1, amount=30)
+        pc2 = PrescriptionMedicine.objects.create(medicine=m11, prescription=pr2, amount=90)
+        pc3 = PrescriptionMedicine.objects.create(medicine=m7, prescription=pr3, amount=50)
+        pc4 = PrescriptionMedicine.objects.create(medicine=m1, prescription=pr4, amount=21)
+        pc5 = PrescriptionMedicine.objects.create(medicine=m4, prescription=pr4, amount=7)
+        pc6 = PrescriptionMedicine.objects.create(medicine=m15, prescription=pr4, amount=20)
+        pc7 = PrescriptionMedicine.objects.create(medicine=m1, prescription=pr5, amount=21)
+        pc8 = PrescriptionMedicine.objects.create(medicine=m4, prescription=pr5, amount=7)
+        pc9 = PrescriptionMedicine.objects.create(medicine=m15, prescription=pr5, amount=20)
+        pc10 = PrescriptionMedicine.objects.create(medicine=m20, prescription=pr6, amount=21)
+        pc11 = PrescriptionMedicine.objects.create(medicine=m19, prescription=pr6, amount=7)
+        pc12 = PrescriptionMedicine.objects.create(medicine=m20, prescription=pr7, amount=20)
+        pc13 = PrescriptionMedicine.objects.create(medicine=m19, prescription=pr7, amount=21)
+        pc14 = PrescriptionMedicine.objects.create(medicine=m20, prescription=pr8, amount=20)
+        pc15 = PrescriptionMedicine.objects.create(medicine=m19, prescription=pr8, amount=20)
 
         # treatment disease
         t1.disease.add(d1, d2, d5)
@@ -227,7 +239,7 @@ class Command(BaseCommand):
         t4.disease.add(d4)
         t5.disease.add(d5)
 
-        # tretment patien
+        # tretment patient
         t1.patience.add(p4, p5, p7)
         t2.patience.add(p7)
         t3.patience.add(p8)
