@@ -58,6 +58,7 @@ class AppointmentView(ListView):
         context = super().get_context_data(**kwargs)
         context["form"] = self.filterset.form
         context["create_form"] = AppointmentForm()
+        context["create_form"].fields['staff'].queryset = Staff.objects.filter(role__name="Doctor")
         return context
 
 

@@ -52,3 +52,6 @@ class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ["staff", "patient", "detail", "dateTime"]
+        widgets = {
+            'dateTime': DateTimePickerInput,
+        }
