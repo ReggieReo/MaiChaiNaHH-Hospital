@@ -34,7 +34,7 @@ class PrescriptionMedicineView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        self.filterset = PrescriptionMedicineFilter(self.request.GET, queryset)
+        self.filterset = MedicineFilter(self.request.GET, queryset)
         return self.filterset.qs
 
     def get_context_data(self, **kwargs):
@@ -144,6 +144,23 @@ def balance_sum_by_date_range(request):
             }
 
             return render(request, 'db/balance_sum_result.html', context)
+
+
+class MedicineView(ListView):
+    queryset = Medicine.objects.all()
+    template_name = "db/medicine.html"
+    context_object_name = "medicines"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset = MedicineFilter(self.request.GET, queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.filterset.form
+        context["create_form"] = CreateMedicineForm()
+        return context
 
 
 class EditMedicine(View):
