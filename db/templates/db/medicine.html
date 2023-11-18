@@ -25,6 +25,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Amount</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
             <td class="font-semibold">{{ medicine.medicine.name }}</td>
             <td class="font-semibold">{{ medicine.medicine.price }}</td>
             <td class="font-semibold">{{ medicine.medicine.amount }}</td>
+            <td class="font-semibold"><a href="{% url "db:edit_medicine" medicine.medicine.id %}">Edit</a></td>
         </tr>
         {% endfor %}
         </tbody>

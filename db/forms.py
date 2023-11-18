@@ -26,3 +26,10 @@ class StaffForm(forms.ModelForm):
         labels = {
                     'name': "Name"
                 }
+
+
+class MedicineEditForm(forms.ModelForm):
+
+    class Meta:
+        model = Medicine
+        fields = ["amount", "price"]

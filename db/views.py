@@ -1,6 +1,7 @@
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
+from django.views.generic.base import View
 from db.models import *
 from db.filters import *
 from db.forms import *
@@ -142,6 +143,21 @@ def balance_sum_by_date_range(request):
             }
 
             return render(request, 'db/balance_sum_result.html', context)
+
+
+class EditMedicine(View):
+
+    def get(self, request, pk):
+        medicine = Medicine.objects.get(pk=pk)
+        edit_form = MedicineEditForm(instance=medicine)
+        context = {"medicine": medicine, "form": edit_form}
+        return render(request, "db/edit_medicine.html", context)
+
+    def post(self, request, pk):
+        form = MedicineEditForm(request.POST, instance=Medicine.objects.get(pk=pk))
+        if form.is_valid():
+            form.save()
+            return redirect('db:medicine')
 
 
 def create_patient(request):
