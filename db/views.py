@@ -40,6 +40,7 @@ class PrescriptionMedicineView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.filterset.form
+        context["create_form"] = CreateMedicineForm()
         return context
 
 
@@ -180,3 +181,12 @@ def create_staff(request):
         if form.is_valid():
             form.save()
             return redirect('db:staff')
+
+
+class CreateMedicine(View):
+
+    def post(self, request):
+        form = CreateMedicineForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('db:medicine')

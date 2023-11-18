@@ -42,6 +42,18 @@
             </div>
         </div>
     </div>
+    <form method="post" action="{% url "db:create_medicine" %}">
+    {% csrf_token %}
+        <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+            <div class="card-body items-center text-center">
+                <h2 class="card-title">Create New Medicine</h2>
+                <h2 class="card-title">Medicine {{ create_form.name }}</h2>
+                <h2 class="card-title">Price {{ create_form.price }}</h2>
+                <h2 class="card-title">Amount {{ create_form.amount }}</h2>
+                <input type="submit" value="Submit" class="btn btn-active btn-secondary ml-5 mt-3"/>
+            </div>
+        </div>
+    </form>
 {% endblock %}
 </body>
 </html>

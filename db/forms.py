@@ -13,23 +13,28 @@ class PatientForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=True,
     )
+
     class Meta:
         model = Patient
         fields = ['name', 'address', 'phone_number', 'department', 'staff', 'age']
 
 
 class StaffForm(forms.ModelForm):
-
     class Meta:
         model = Staff
         fields = ["name", "role", "department"]
         labels = {
-                    'name': "Name"
-                }
+            'name': "Name"
+        }
+
+
+class CreateMedicineForm(forms.ModelForm):
+    class Meta:
+        model = Medicine
+        fields = ["name", "amount", "price"]
 
 
 class MedicineEditForm(forms.ModelForm):
-
     class Meta:
         model = Medicine
         fields = ["amount", "price"]
