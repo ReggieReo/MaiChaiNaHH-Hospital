@@ -38,3 +38,9 @@ class MedicineEditForm(forms.ModelForm):
     class Meta:
         model = Medicine
         fields = ["amount", "price"]
+
+
+class DiseaseForm(forms.ModelForm):
+    class Meta:
+        model = Disease
+        fields = ["name"]
