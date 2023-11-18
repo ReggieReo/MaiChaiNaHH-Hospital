@@ -55,3 +55,33 @@ class AppointmentForm(forms.ModelForm):
         widgets = {
             'dateTime': DateTimePickerInput,
         }
+
+
+class AccountingForm(forms.ModelForm):
+    is_expense = forms.BooleanField(required=False)
+
+    class Meta:
+        model = Accounting
+        fields = ["patient", "balance", "date"]
+        widgets = {
+            'date': DateTimePickerInput,
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()  # Call parent's clean method
+        balance = cleaned_data.get("balance")
+        is_expense = cleaned_data.get("is_expense")
+        pat = cleaned_data.get("patient")
+
+        if is_expense:
+            if balance > 0 or pat is not None:
+                print("Nope")
+                raise forms.ValidationError("Nope")
+        else:
+            if balance < 0 or pat is None:
+                print("Nope")
+                raise forms.ValidationError("Nope")
+
+        print("pass")
+
+        return cleaned_data

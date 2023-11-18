@@ -76,6 +76,8 @@ class AccountingView(ListView):
         context = super().get_context_data(**kwargs)
         context["form"] = self.filterset.form
         context["formsum"] = BalanceSumForm()
+        context["create_form"] = AccountingForm()
+        context["create_form"].fields['patient'].required = False
         return context
 
 
@@ -186,12 +188,10 @@ def create_patient(request):
         form = PatientForm(request.POST)
         if form.is_valid():
             diseases = form.cleaned_data['diseases']
-            print(diseases)
             patient = form.save(commit=False)
             patient.save()
             for disease in diseases:
                 patient.disease_set.add(disease)
-            print(patient.disease_set)
             return redirect('db:index')
 
 
@@ -228,3 +228,25 @@ class CreateAppointment(View):
         if form.is_valid():
             form.save()
             return redirect('db:appointment')
+
+
+class CreateAccounting(View):
+
+    def post(self, request):
+        form = AccountingForm(request.POST)
+        if form.is_valid():
+            account = form.save(commit=False)
+            account.hospital = Hospital.objects.get(id=1)
+            account.save()
+            return redirect('db:accounting')
+        else:
+            pat = form.cleaned_data.get("patient")
+            expen = form.cleaned_data.get("is_expense")
+            balance = form.cleaned_data.get("balance")
+            date = form.cleaned_data.get("date")
+            if pat is None and expen is True and balance < 0:
+                account = Accounting(patient=None, balance=balance, date=date)
+                account.hospital = Hospital.objects.get(id=1)
+                account.save()
+                print(account)
+            return redirect('db:accounting')
