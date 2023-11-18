@@ -44,5 +44,14 @@
         </div>
     </div>
 </div>
+<form method="post" action="{% url 'db:create_appointment' %}">
+    <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card-body items-center text-center">
+            {% csrf_token %}
+          {{ create_form }}
+        <button type="submit" class="btn btn-active btn-secondary ml-5 mt-3">Submit</button>
+      </div>
+    </div>
+</form>
 </body>
 </html>

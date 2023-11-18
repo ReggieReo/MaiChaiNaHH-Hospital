@@ -16,7 +16,8 @@ urlpatterns = [
     path("sum", balance_sum_by_date_range, name="sum"),
     path("create_patient", create_patient, name="create_patient"),
     path("create_staff", create_staff, name="create_staff"),
-    path("create_deisease", CreateDisease.as_view(), name="create_disease"),
+    path("create_disease", CreateDisease.as_view(), name="create_disease"),
     path("edit_medicine/<int:pk>", EditMedicine.as_view(), name="edit_medicine"),
     path("create_medicine", CreateMedicine.as_view(), name="create_medicine"),
+    path("create_appointment", CreateAppointment.as_view(), name="create_appointment"),
 ]

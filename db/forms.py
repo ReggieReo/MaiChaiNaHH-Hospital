@@ -1,5 +1,7 @@
+import django_filters
 from django import forms
 from db.models import *
+from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
 
 
 class BalanceSumForm(forms.Form):
@@ -44,3 +46,9 @@ class DiseaseForm(forms.ModelForm):
     class Meta:
         model = Disease
         fields = ["name"]
+
+
+class AppointmentForm(forms.ModelForm):
+    class Meta:
+        model = Appointment
+        fields = ["staff", "patient", "detail", "dateTime"]

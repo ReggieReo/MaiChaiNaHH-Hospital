@@ -41,7 +41,9 @@ class MedicineFilter(django_filters.FilterSet):
 class AppointmentFilter(django_filters.FilterSet):
     staff = django_filters.ModelChoiceFilter(queryset=Staff.objects.filter(role__name="Doctor"))
     patient = django_filters.ModelChoiceFilter(queryset=Patient.objects.filter(appointment__isnull=False))
-    dateTime = django_filters.DateTimeFilter(widget=DateTimePickerInput(), lookup_expr="date")
+    dateTime = django_filters.DateTimeFilter(widget=DateTimePickerInput(
+        attrs={'type': 'date', 'class': 'input input-bordered w-full max-w-xs mx-auto my-4 input-sm'}),
+        lookup_expr="date")
 
     class Meta:
         model = Appointment

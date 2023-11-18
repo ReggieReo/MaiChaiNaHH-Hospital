@@ -57,6 +57,7 @@ class AppointmentView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = self.filterset.form
+        context["create_form"] = AppointmentForm()
         return context
 
 
@@ -217,3 +218,12 @@ class CreateDisease(View):
         if form.is_valid():
             form.save()
             return redirect('db:disease')
+
+
+class CreateAppointment(View):
+
+    def post(self, request):
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('db:appointment')
