@@ -55,8 +55,8 @@
             {% else %}
             <td>Not in anyroom</td>
             {% endif %}
-        <td><a href="{% url "db:edit_patient" patient.id %}">Edit</a> </td>
-        <td><a href="{% url "db:delete_patient" patient.id %}">Delete</a> </td>
+        <td><a href="{% url "db:edit_patient" patient.id %}">Edit</a><br>
+        <a href="{% url "db:delete_patient" patient.id %}">Delete</a> </td>
         </tr>
         {% endfor %}
         </tbody>

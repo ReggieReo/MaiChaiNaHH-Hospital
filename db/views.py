@@ -276,3 +276,25 @@ class EditPatient(View):
             for disease in diseases:
                 patient.disease_set.add(disease)
             return redirect('db:index')
+
+
+class DeleteStaff(View):
+
+    def get(self, request, pk):
+        staff = Staff.objects.get(pk=pk).delete()
+        return redirect("db:staff")
+
+
+class EditStaff(View):
+
+    def get(self, request, pk):
+        staff = Staff.objects.get(pk=pk)
+        edit_form = StaffForm(instance=staff)
+        context = {"staff": staff, "form": edit_form}
+        return render(request, "db/staff_edit.html", context)
+
+    def post(self, request, pk):
+        form = StaffForm(request.POST, instance=Staff.objects.get(pk=pk))
+        if form.is_valid():
+            form.save()
+            return redirect('db:staff')

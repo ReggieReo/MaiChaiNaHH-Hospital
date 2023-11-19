@@ -27,6 +27,7 @@
                     <th>Name</th>
                     <th>Role</th>
                     <th>Department</th>
+                    <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,8 @@
                         <td class="font-semibold">{{ staff.name }}</td>
                         <td>{{ staff.role }}</td>
                         <td>{{ staff.department }}</td>
+                        <td><a href="{% url "db:edit_staff" staff.id %}">Edit</a><br>
+                        <a href="{% url "db:delete_staff" staff.id %}">Delete</a> </td>
                     </tr>
                 {% endfor %}
                 </tbody>
