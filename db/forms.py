@@ -15,10 +15,12 @@ class PatientForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=True,
     )
+    name = forms.CharField(widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
 
     class Meta:
         model = Patient
-        fields = ['name', 'address', 'phone_number', 'department', 'staff', 'age']
+        fields = ['name', 'address', 'phone_number', 'department', 'staff', 'age', 'diseases']
 
 
 class StaffForm(forms.ModelForm):
