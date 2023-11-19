@@ -183,6 +183,12 @@ class EditMedicine(View):
             return redirect('db:medicine')
 
 
+class DeleteMedicine(View):
+    def get(self, requtest, pk):
+        Medicine.objects.get(pk=pk).delete()
+        redirect("db:medicine")
+
+
 def create_patient(request):
     if request.method == 'POST':
         form = PatientForm(request.POST)

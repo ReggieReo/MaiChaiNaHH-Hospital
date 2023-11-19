@@ -34,7 +34,8 @@
             <td class="font-semibold">{{ medicine.name }}</td>
             <td class="font-semibold">{{ medicine.price }}</td>
             <td class="font-semibold">{{ medicine.amount }}</td>
-            <td class="font-semibold"><a href="{% url "db:edit_medicine" medicine.id %}">Edit</a></td>
+            <td class="font-semibold"><a href="{% url "db:edit_medicine" medicine.id %}">Edit</a><br>
+            <a href="{% url "db:delete_medicine" medicine.id %}">Delete</a></td>
         </tr>
         {% endfor %}
         </tbody>
@@ -46,7 +47,7 @@
     {% csrf_token %}
         <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
-                <h2 class="card-title">Create New Medicine</h2>
+                <h2 class="card-title">Add New Medicine</h2>
                 <h2 class="card-title">Medicine {{ create_form.name }}</h2>
                 <h2 class="card-title">Price {{ create_form.price }}</h2>
                 <h2 class="card-title">Amount {{ create_form.amount }}</h2>
