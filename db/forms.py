@@ -50,6 +50,12 @@ class DiseaseForm(forms.ModelForm):
         fields = ["name"]
 
 
+class RoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        fields = ["patient"]
+
+
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment

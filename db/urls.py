@@ -30,4 +30,7 @@ urlpatterns = [
     path("delete_appointment/<int:pk>", DeleteAppointment.as_view(), name="delete_appointment"),
     path("edit_appointment/<int:pk>", EditAppointment.as_view(), name="edit_appointment"),
     path("delete_dedicine/<int:pk>", DeleteMedicine.as_view(), name="delete_medicine"),
+    path("room", RoomView.as_view(), name="room"),
+    path("edit_room/<int:pk>", EditRoom.as_view(), name="edit_room"),
+
 ]

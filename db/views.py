@@ -349,3 +349,25 @@ class EditAppointment(View):
         if form.is_valid():
             form.save()
             return redirect('db:appointment')
+
+
+class RoomView(ListView):
+    queryset = Room.objects.all()
+    template_name = "db/room.html"
+    context_object_name = "rooms"
+
+
+class EditRoom(View):
+
+    def get(self, request, pk):
+        room = Room.objects.get(pk=pk)
+        edit_form = RoomForm(instance=room)
+        edit_form.fields["patient"].queryset = Patient.objects.filter(room__isnull=True)
+        context = {"rooms": room, "form": edit_form}
+        return render(request, "db/edit_room.html", context)
+
+    def post(self, request, pk):
+        form = RoomForm(request.POST, instance=Room.objects.get(pk=pk))
+        if form.is_valid():
+            form.save()
+            return redirect("db:index")

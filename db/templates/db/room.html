@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+</head>
+<body>
+{% block content %}
+    {% include "base.html" %}
+    <div class="flex justify-center items-center mt-5">
+        <div class="overflow-x-24 card w-8/12 mx-6 bg-base-100 shadow-xl">
+            <div class="table-container max-h-96 overflow-y-auto rounded-lg">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Patient</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for room in rooms %}
+                        <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
+                            <td class="font-semibold">{{ room.room_number }}</td>
+                            {% if room.patient %}
+                                <td class="font-semibold">{{ room.patient }}</td>
+                            {% else %}
+                                <td class="font-semibold">Empty</td>
+                            {% endif %}
+                            <td class="font-semibold"><a href="{% url "db:edit_room" room.id %}">Edit</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<p>ㅤ</p>
+
+</body>
+</html>
