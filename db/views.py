@@ -327,3 +327,25 @@ class EditDisease(View):
             return redirect('db:disease')
 
         print("Not Pass")
+
+
+class DeleteAppointment(View):
+
+    def get(self, request, pk):
+        Appointment.objects.get(pk=pk).delete()
+        return redirect("db:appointment")
+
+
+class EditAppointment(View):
+
+    def get(self, request, pk):
+        appointment = Appointment.objects.get(pk=pk)
+        edit_form = AppointmentForm(instance=appointment)
+        context = {"appointment": appointment, "form": edit_form}
+        return render(request, "db/appointment_edit.html", context)
+
+    def post(self, request, pk):
+        form = AppointmentForm(request.POST, instance=Appointment.objects.get(pk=pk))
+        if form.is_valid():
+            form.save()
+            return redirect('db:appointment')

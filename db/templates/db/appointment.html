@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Appointment</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.8"></script>
 </head>
 <body>
 {% include "base.html" %}
-    <form hx-get="{% url "db:appointment" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
-        <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
-            <div class="card-body items-center text-center">
-                {{ form.media }}
-                {{ form.as_p }}
+<form hx-get="{% url "db:appointment" %}" hx-target='body' hx-trigger="input delay:500ms, change delay:500ms">
+    <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card-body items-center text-center">
+            {{ form.media }}
+            {{ form.as_p }}
             <input type="submit" value="Submit" class="btn btn-active btn-secondary ml-5 mt-3"/>
-            </div>
-          </div>
-    </form>
+        </div>
+    </div>
+</form>
 <div class="flex justify-center items-center mt-5">
     <div class="overflow-x-24 card w-9/12 mx-6 bg-base-100 shadow-xl">
         <div class="table-container max-h-96 overflow-y-auto rounded-lg">
@@ -28,6 +28,7 @@
                     <th>Patient</th>
                     <th>Detail</th>
                     <th>Date</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,9 @@
                         <td>{{ appointment.patient }}</td>
                         <td>{{ appointment.detail }}</td>
                         <td>{{ appointment.dateTime }}</td>
+                        <td><a href="{% url "db:edit_appointment" appointment.id %}">Edit</a><br>
+                            <a href="{% url "db:delete_appointment" appointment.id %}">Delete</a></td>
+
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -48,9 +52,9 @@
     <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
         <div class="card-body items-center text-center">
             {% csrf_token %}
-          {{ create_form }}
-        <button type="submit" class="btn btn-active btn-secondary ml-5 mt-3">Submit</button>
-      </div>
+            {{ create_form }}
+            <button type="submit" class="btn btn-active btn-secondary ml-5 mt-3">Submit</button>
+        </div>
     </div>
 </form>
 </body>
