@@ -250,3 +250,29 @@ class CreateAccounting(View):
                 account.save()
                 print(account)
             return redirect('db:accounting')
+
+
+class DeletePatient(View):
+
+    def get(self, request, pk):
+        patient = Patient.objects.get(pk=pk).delete()
+        return redirect('db:index')
+
+
+class EditPatient(View):
+
+    def get(self, request, pk):
+        patient = Patient.objects.get(pk=pk)
+        edit_form = PatientForm(instance=patient)
+        context = {"patient": patient, "form": edit_form}
+        return render(request, "db/patient_edit.html", context)
+
+    def post(self, request, pk):
+        form = PatientForm(request.POST, instance=Patient.objects.get(pk=pk))
+        if form.is_valid():
+            diseases = form.cleaned_data['diseases']
+            patient = form.save(commit=False)
+            patient.save()
+            for disease in diseases:
+                patient.disease_set.add(disease)
+            return redirect('db:index')
