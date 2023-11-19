@@ -304,3 +304,26 @@ class EditStaff(View):
         if form.is_valid():
             form.save()
             return redirect('db:staff')
+
+
+class DeleteDisease(View):
+    def get(self, request, pk):
+        Disease.objects.get(pk=pk).delete()
+        return redirect("db:disease")
+
+
+class EditDisease(View):
+
+    def get(self, request, pk):
+        disease = Disease.objects.get(pk=pk)
+        edit_form = DiseaseForm(instance=disease)
+        context = {"disease": disease, "form": edit_form}
+        return render(request, "db/disease_edit.html", context)
+
+    def post(self, request, pk):
+        form = DiseaseForm(request.POST, instance=Disease.objects.get(pk=pk))
+        if form.is_valid():
+            form.save()
+            return redirect('db:disease')
+
+        print("Not Pass")

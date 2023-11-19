@@ -28,6 +28,7 @@
                     <tr>
                         <th>Disease Name</th>
                         <th>Patient Name</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,8 @@
                             {% else %}
                             No patient having this disease
                             {% endif %}
+                            <td><a href="{% url "db:edit_disease" disease.id %}">Edit</a><br>
+                                <a href="{% url "db:delete_disease" disease.id %}">Delete</a> </td>
                             </td>
                         </tr>
                     {% endfor %}
