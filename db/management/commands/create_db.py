@@ -81,28 +81,36 @@ class Command(BaseCommand):
         r6 = Room(department=d2, room_number=203)
         r6.save()
 
-
         # Create 10 accounting records that date from today to back 1 year
         from datetime import datetime, timedelta
         a1 = Accounting(balance=1000, date=datetime.now(), hospital=h, patient=p1)
         a1.save()
-        a2 = Accounting(balance=2000, date=datetime.now() - timedelta(days=30, hours=1, minutes=15), hospital=h, patient=p2)
+        a2 = Accounting(balance=2000, date=datetime.now() - timedelta(days=30, hours=1, minutes=15), hospital=h,
+                        patient=p2)
         a2.save()
-        a3 = Accounting(balance=3000, date=datetime.now() - timedelta(days=60, hours=2, minutes=30), hospital=h, patient=p3)
+        a3 = Accounting(balance=3000, date=datetime.now() - timedelta(days=60, hours=2, minutes=30), hospital=h,
+                        patient=p3)
         a3.save()
-        a4 = Accounting(balance=4000, date=datetime.now() - timedelta(days=90, hours=3, minutes=45), hospital=h, patient=p4)
+        a4 = Accounting(balance=4000, date=datetime.now() - timedelta(days=90, hours=3, minutes=45), hospital=h,
+                        patient=p4)
         a4.save()
-        a5 = Accounting(balance=5000, date=datetime.now() - timedelta(days=120, hours=4, minutes=0), hospital=h, patient=p5)
+        a5 = Accounting(balance=5000, date=datetime.now() - timedelta(days=120, hours=4, minutes=0), hospital=h,
+                        patient=p5)
         a5.save()
-        a6 = Accounting(balance=6000, date=datetime.now() - timedelta(days=150, hours=5, minutes=15), hospital=h, patient=p6)
+        a6 = Accounting(balance=6000, date=datetime.now() - timedelta(days=150, hours=5, minutes=15), hospital=h,
+                        patient=p6)
         a6.save()
-        a7 = Accounting(balance=7000, date=datetime.now() - timedelta(days=180, hours=6, minutes=30), hospital=h, patient=p7)
+        a7 = Accounting(balance=7000, date=datetime.now() - timedelta(days=180, hours=6, minutes=30), hospital=h,
+                        patient=p7)
         a7.save()
-        a8 = Accounting(balance=8000, date=datetime.now() - timedelta(days=210, hours=7, minutes=45), hospital=h, patient=p8)
+        a8 = Accounting(balance=8000, date=datetime.now() - timedelta(days=210, hours=7, minutes=45), hospital=h,
+                        patient=p8)
         a8.save()
-        a9 = Accounting(balance=9000, date=datetime.now() - timedelta(days=240, hours=8, minutes=0), hospital=h, patient=p9)
+        a9 = Accounting(balance=9000, date=datetime.now() - timedelta(days=240, hours=8, minutes=0), hospital=h,
+                        patient=p9)
         a9.save()
-        a10 = Accounting(balance=10000, date=datetime.now() - timedelta(days=270, hours=9, minutes=15), hospital=h, patient=p10)
+        a10 = Accounting(balance=10000, date=datetime.now() - timedelta(days=270, hours=9, minutes=15), hospital=h,
+                         patient=p10)
         a10.save()
         a11 = Accounting(balance=-1500, date=datetime.now() - timedelta(days=20, hours=8, minutes=0), hospital=h)
         a11.save()
@@ -116,15 +124,20 @@ class Command(BaseCommand):
         a15.save()
 
         # Create 5 appointments
-        ap1 = Appointment(staff=s1, patient=p1, dateTime=datetime.now() + timedelta(days=1, hours=1, minutes=22), detail="Follow-up checkup")
+        ap1 = Appointment(staff=s1, patient=p1, dateTime=datetime.now() + timedelta(days=1, hours=1, minutes=22),
+                          detail="Follow-up checkup")
         ap1.save()
-        ap2 = Appointment(staff=s1, patient=p2, dateTime=datetime.now() + timedelta(days=2, hours=3, minutes=53), detail="Blood test")
+        ap2 = Appointment(staff=s1, patient=p2, dateTime=datetime.now() + timedelta(days=2, hours=3, minutes=53),
+                          detail="Blood test")
         ap2.save()
-        ap3 = Appointment(staff=s4, patient=p6, dateTime=datetime.now() + timedelta(days=3, hours=5, minutes=23), detail="MRI scan")
+        ap3 = Appointment(staff=s4, patient=p6, dateTime=datetime.now() + timedelta(days=3, hours=5, minutes=23),
+                          detail="MRI scan")
         ap3.save()
-        ap4 = Appointment(staff=s4, patient=p7, dateTime=datetime.now() + timedelta(days=4, hours=7, minutes=45), detail="Medication refill")
+        ap4 = Appointment(staff=s4, patient=p7, dateTime=datetime.now() + timedelta(days=4, hours=7, minutes=45),
+                          detail="Medication refill")
         ap4.save()
-        ap5 = Appointment(staff=s4, patient=p8, dateTime=datetime.now() + timedelta(days=5, hours=9, minutes=10), detail="Physical therapy")
+        ap5 = Appointment(staff=s4, patient=p8, dateTime=datetime.now() + timedelta(days=5, hours=9, minutes=10),
+                          detail="Physical therapy")
         ap5.save()
 
         # Create 20 medicines with real medicine names
@@ -183,18 +196,6 @@ class Command(BaseCommand):
         d6 = Disease(name="Flu")  # internal
         d6.save()
 
-        # Create 3 treatments with real treatment names
-        t1 = Treatment(name="Lifestyle modification")
-        t1.save()
-        t2 = Treatment(name="Insulin injection")
-        t2.save()
-        t3 = Treatment(name="Inhaler therapy")
-        t3.save()
-        t4 = Treatment(name="Stimulate memory")
-        t4.save()
-        t5 = Treatment(name="Activity in evening")
-        t5.save()
-
         # patein dicise
         d1.patient.add(p6)  # Hypertension
         d2.patient.add(p7)  # Diabete
@@ -239,17 +240,3 @@ class Command(BaseCommand):
         pc13 = PrescriptionMedicine.objects.create(medicine=m19, prescription=pr7, amount=21)
         pc14 = PrescriptionMedicine.objects.create(medicine=m20, prescription=pr8, amount=20)
         pc15 = PrescriptionMedicine.objects.create(medicine=m19, prescription=pr8, amount=20)
-
-        # treatment disease
-        t1.disease.add(d1, d2, d5)
-        t2.disease.add(d2)
-        t3.disease.add(d3)
-        t4.disease.add(d4)
-        t5.disease.add(d5)
-
-        # tretment patient
-        t1.patience.add(p4, p5, p7)
-        t2.patience.add(p7)
-        t3.patience.add(p8)
-        t4.patience.add(p1, p2, p3)
-        t5.patience.add(p4, p5)

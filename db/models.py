@@ -21,6 +21,7 @@ class Role(models.Model):
     def __str__(self):
         return self.name
 
+
 class Staff(models.Model):
     name = models.CharField(Role, max_length=255)
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True)
@@ -103,9 +104,3 @@ class Disease(models.Model):
 
     def __repr__(self):
         return self.name
-
-
-class Treatment(models.Model):
-    name = models.CharField(max_length=255)
-    disease = models.ManyToManyField(Disease)
-    patience = models.ManyToManyField(Patient)
