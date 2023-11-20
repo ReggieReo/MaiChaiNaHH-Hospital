@@ -1,5 +1,5 @@
-# IntercityRailwayReservationSystem
-HospitalManagementSystem is a proposed project for the "Database Systems for 
+# MaiChaiNaHH Hospitle
+MaiChaiNaHH Hospitle is a proposed project for the "Database Systems for 
 Software and Knowledge Engineers" (01219231) course. This web application is 
 designed to manage and streamline various aspects of hospital operations through 
 an effective database system. The project's goal is to simulate a real-world 
