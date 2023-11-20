@@ -45,7 +45,7 @@ class PrescriptionMedicineView(ListView):
 
 
 class AppointmentView(ListView):
-    queryset = Appointment.objects.all()
+    queryset = Appointment.objects.all().order_by("dateTime")
     template_name = "db/appointment.html"
     context_object_name = "appointments"
 
