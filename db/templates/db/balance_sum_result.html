@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-{{ balance_sum }}
-<h3>Queryset within Date Range:</h3>
-<ul>
-    {% for entry in queryset %}
-        <li>{{ entry.date }} - Balance: {{ entry.balance }}</li>
-    {% endfor %}
-</ul>
+<body>
+    <h2>{{ balance_sum }}</h2>
+    <table class="table">
+        <thead>
+            <tr class="font-semibold">
+                <th>Date</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in queryset %}
+            <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
+                <td>{{ entry.date }}</td>
+                <td>{{ entry.balance }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
 </html>
