@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Create sample models for the app'
 
     def handle(self, *args, **kwargs):
-        h = Hospital(name="Lat Yao Hospital", address="Lat Yao, Bangkok, Thailand", phone_number="021234567")
+        h = Hospital(name="MaiChaiNaHH Hospital", address="Lat Yao, Bangkok, Thailand", phone_number="021234567")
         h.save()
 
         # Create two departments
