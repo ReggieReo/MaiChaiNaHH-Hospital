@@ -23,10 +23,9 @@ class PatientFilter(django_filters.FilterSet):
         list_ = tuple(list_)
         return list_
 
-
-class Meta:
-    model = Patient
-    fields = ["name", "staff__name", "room__room_number", "department", "disease"]
+    class Meta:
+        model = Patient
+        fields = ["name", "staff__name", "room__room_number", "department", "disease"]
 
 
 class MedicineFilter(django_filters.FilterSet):
