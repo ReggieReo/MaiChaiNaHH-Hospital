@@ -70,6 +70,12 @@ class Medicine(models.Model):
     price = models.FloatField()
     amount = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
+
 
 class Prescription(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)

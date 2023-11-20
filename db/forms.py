@@ -93,3 +93,16 @@ class AccountingForm(forms.ModelForm):
         print("pass")
 
         return cleaned_data
+
+
+class PrescriptionForm(forms.ModelForm):
+    class Meta:
+        model = Prescription
+        fields = ["staff", "patient"]
+
+
+class PMForm(forms.ModelForm):
+    class Meta:
+        model = PrescriptionMedicine
+        fields = ["medicine", "amount", "prescription"]
+        widgets = {"prescription": forms.HiddenInput()}

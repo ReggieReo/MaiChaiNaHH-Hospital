@@ -111,6 +111,9 @@ class PrescriptionView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = self.filterset.form
+        context["create_form"] = PrescriptionForm()
+        context["create_form"].fields['staff'].queryset = Staff.objects.filter(
+            role__name="Doctor")
         return context
 
 
@@ -184,9 +187,9 @@ class EditMedicine(View):
 
 
 class DeleteMedicine(View):
-    def get(self, requtest, pk):
+    def get(self, request, pk):
         Medicine.objects.get(pk=pk).delete()
-        redirect("db:medicine")
+        return redirect("db:medicine")
 
 
 def create_patient(request):
@@ -371,3 +374,46 @@ class EditRoom(View):
         if form.is_valid():
             form.save()
             return redirect("db:index")
+
+
+class CreatePrescription(View):
+
+    def post(self, request):
+        form = PrescriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('db:prescription')
+
+
+class EditPrescription(View):
+
+    def get(self, request, pk):
+        request.session["current_pres"] = pk
+        pres_med = PrescriptionMedicine.objects.filter(prescription__id=pk)
+        form = PMForm()
+        pres = Prescription.objects.get(pk=pk)
+        form.fields["prescription"].initial = pres
+        context = {"prescription": pres_med,
+                   "create_form": form, "pk": pk}
+        return render(request, "db/edit_prescription.html", context)
+
+    def post(self, request, pk):
+        form = PMForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("db:edit_prescription", pk=pk)
+
+
+def delete_medicine(request, pk):
+    if request.method == 'GET':
+        re = request.session.get("current_pres")
+        pm = PrescriptionMedicine.objects.get(pk=pk)
+        pm.delete()
+        return redirect("db:edit_prescription", pk=re)
+
+
+class DeletePrescription(View):
+
+    def get(self, request, pk):
+        Prescription.objects.get(pk=pk).delete()
+        return redirect("db:prescription")

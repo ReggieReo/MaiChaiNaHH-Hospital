@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+</head>
+<body>
+{% include "base.html" %}
+<div class="flex justify-center items-center mt-5">
+    <div class="overflow-x-24 card w-9/12 mx-6 bg-base-100 shadow-xl">
+        <div class="table-container max-h-96 overflow-y-auto rounded-lg">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Medicine</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for medicine in prescription %}
+                    <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
+                        <td>
+                            {{ medicine.medicine }}
+                        </td>
+                        <td>
+                            {{ medicine.amount }}
+                        </td>
+                        <td class="font-semibold">
+                            <a href="{% url "db:remove_medicine" medicine.id %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<form method="post" action="{% url 'db:edit_prescription' pk %}">
+    <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card-body items-center text-center">
+            {% csrf_token %}
+          {{ create_form }}
+        <button type="submit" class="btn btn-active btn-secondary ml-5 mt-3">Add</button>
+      </div>
+    </div>
+</form>
+</body>
+</html>

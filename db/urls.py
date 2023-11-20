@@ -29,8 +29,11 @@ urlpatterns = [
     path("edit_disease/<int:pk>", EditDisease.as_view(), name="edit_disease"),
     path("delete_appointment/<int:pk>", DeleteAppointment.as_view(), name="delete_appointment"),
     path("edit_appointment/<int:pk>", EditAppointment.as_view(), name="edit_appointment"),
-    path("delete_dedicine/<int:pk>", DeleteMedicine.as_view(), name="delete_medicine"),
+    path("delete_medicine/<int:pk>", DeleteMedicine.as_view(), name="delete_medicine"),
     path("room", RoomView.as_view(), name="room"),
     path("edit_room/<int:pk>", EditRoom.as_view(), name="edit_room"),
-
+    path("create_prescription", CreatePrescription.as_view(), name="create_prescription"),
+    path("edit_prescription/<int:pk>", EditPrescription.as_view(), name="edit_prescription"),
+    path("delete_prescription/<int:pk>", DeletePrescription.as_view(), name="delete_prescription"),
+    path("remove_medicine/<int:pk>", delete_medicine, name="remove_medicine"),
 ]

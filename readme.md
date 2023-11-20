@@ -23,13 +23,5 @@ Prescription contains Medicine
 
 * Disease(__diseaseID__, name)
 
-* Treatment(__treatmentID__, name)
-
 one patient can have many PatientDisease
 * PatientDisease(__patientID__, __diseaseID__)
-
-Disease can have multiple Treatment
-* DiseaseTreatment(__diseaseID__, __treatmentID__)
-
-Patient can recieve multiple Treatment
-* PatientTreatment(__patientID__, __treatmentID__)
