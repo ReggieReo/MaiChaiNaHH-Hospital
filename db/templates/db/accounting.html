@@ -52,6 +52,7 @@
         {% csrf_token %}
         <div class="card w-5/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
+                <h2 class="card-title">Balance summation</h2>
                 <div class="grid grid-cols-2 gap-4">
                     {{ formsum.as_p}}
                 </div>
