@@ -18,8 +18,8 @@ operations and queries efficiently.
 
 1) Clone the repository:
 ```
-git clone https://github.com/ReggieReo/SuperDuperHospitle.git
-cd SuperDuperHospitle
+git clone https://github.com/ReggieReo/MaiChaiNaHH-Hospital.git
+cd MaiChaiNaHH-Hospital
 ```
 2) Check if Python is installed:
 ```
