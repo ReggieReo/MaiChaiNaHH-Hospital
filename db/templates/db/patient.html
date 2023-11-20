@@ -10,7 +10,7 @@
     <form hx-get="{% url "db:index" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
         <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
-              <h2 class="card-title">Staff {{ form.staff__name }} Patient {{ form.name }}</h2>
+              <h2 class="card-title">Patient {{ form.name }} Staff {{ form.staff__name }}</h2>
               <div class="grid grid-cols-3 gap-4">
               <h2>Department</h2>
               <h2>Disease</h2>
