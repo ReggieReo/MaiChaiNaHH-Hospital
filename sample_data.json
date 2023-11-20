@@ -1,0 +1,991 @@
+[
+{
+    "model": "db.hospital",
+    "pk": 1,
+    "fields": {
+        "name": "Lat Yao Hospital",
+        "address": "Lat Yao, Bangkok, Thailand",
+        "phone_number": "021234567"
+    }
+},
+{
+    "model": "db.department",
+    "pk": 1,
+    "fields": {
+        "hospital": 1,
+        "name": "Neuro"
+    }
+},
+{
+    "model": "db.department",
+    "pk": 2,
+    "fields": {
+        "hospital": 1,
+        "name": "Internal medicine"
+    }
+},
+{
+    "model": "db.role",
+    "pk": 1,
+    "fields": {
+        "name": "Doctor"
+    }
+},
+{
+    "model": "db.role",
+    "pk": 2,
+    "fields": {
+        "name": "Nurse"
+    }
+},
+{
+    "model": "db.role",
+    "pk": 3,
+    "fields": {
+        "name": "Pharmacist"
+    }
+},
+{
+    "model": "db.staff",
+    "pk": 1,
+    "fields": {
+        "name": "Dr. Somchai",
+        "role": 1,
+        "department": 1
+    }
+},
+{
+    "model": "db.staff",
+    "pk": 2,
+    "fields": {
+        "name": "Nurse Nong",
+        "role": 2,
+        "department": 1
+    }
+},
+{
+    "model": "db.staff",
+    "pk": 3,
+    "fields": {
+        "name": "Pharmacist Ploy",
+        "role": 3,
+        "department": 1
+    }
+},
+{
+    "model": "db.staff",
+    "pk": 4,
+    "fields": {
+        "name": "Dr. Somsak",
+        "role": 1,
+        "department": 2
+    }
+},
+{
+    "model": "db.staff",
+    "pk": 5,
+    "fields": {
+        "name": "Nurse Noi",
+        "role": 2,
+        "department": 2
+    }
+},
+{
+    "model": "db.staff",
+    "pk": 6,
+    "fields": {
+        "name": "Pharmacist Pim",
+        "role": 3,
+        "department": 2
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 1,
+    "fields": {
+        "name": "Arun",
+        "address": "Bang Kapi, Bangkok, Thailand",
+        "phone_number": "0812345678",
+        "department": 1,
+        "staff": 1,
+        "age": 45
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 2,
+    "fields": {
+        "name": "Boon",
+        "address": "Bang Na, Bangkok, Thailand",
+        "phone_number": "0823456789",
+        "department": 1,
+        "staff": 1,
+        "age": 50
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 3,
+    "fields": {
+        "name": "Chai",
+        "address": "Chatuchak, Bangkok, Thailand",
+        "phone_number": "0834567890",
+        "department": 1,
+        "staff": 1,
+        "age": 55
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 4,
+    "fields": {
+        "name": "Dao",
+        "address": "Din Daeng, Bangkok, Thailand",
+        "phone_number": "0845678901",
+        "department": 1,
+        "staff": 1,
+        "age": 60
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 5,
+    "fields": {
+        "name": "Eak",
+        "address": "Ekkamai, Bangkok, Thailand",
+        "phone_number": "0856789012",
+        "department": 1,
+        "staff": 1,
+        "age": 65
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 6,
+    "fields": {
+        "name": "Fah",
+        "address": "Lat Phrao, Bangkok, Thailand",
+        "phone_number": "0867890123",
+        "department": 2,
+        "staff": 4,
+        "age": 40
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 7,
+    "fields": {
+        "name": "Gai",
+        "address": "Ladprao, Bangkok, Thailand",
+        "phone_number": "0878901234",
+        "department": 2,
+        "staff": 4,
+        "age": 35
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 8,
+    "fields": {
+        "name": "Hong",
+        "address": "Huai Khwang, Bangkok, Thailand",
+        "phone_number": "0889012345",
+        "department": 2,
+        "staff": 4,
+        "age": 30
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 9,
+    "fields": {
+        "name": "In",
+        "address": "Ratchathewi, Bangkok, Thailand",
+        "phone_number": "0890123456",
+        "department": 2,
+        "staff": 4,
+        "age": 25
+    }
+},
+{
+    "model": "db.patient",
+    "pk": 10,
+    "fields": {
+        "name": "Jai",
+        "address": "Sathon, Bangkok, Thailand",
+        "phone_number": "0901234567",
+        "department": 2,
+        "staff": 4,
+        "age": 20
+    }
+},
+{
+    "model": "db.room",
+    "pk": 1,
+    "fields": {
+        "department": 1,
+        "room_number": 101,
+        "patient": 1
+    }
+},
+{
+    "model": "db.room",
+    "pk": 2,
+    "fields": {
+        "department": 1,
+        "room_number": 102,
+        "patient": 2
+    }
+},
+{
+    "model": "db.room",
+    "pk": 3,
+    "fields": {
+        "department": 1,
+        "room_number": 103,
+        "patient": null
+    }
+},
+{
+    "model": "db.room",
+    "pk": 4,
+    "fields": {
+        "department": 2,
+        "room_number": 201,
+        "patient": 6
+    }
+},
+{
+    "model": "db.room",
+    "pk": 5,
+    "fields": {
+        "department": 2,
+        "room_number": 202,
+        "patient": 7
+    }
+},
+{
+    "model": "db.room",
+    "pk": 6,
+    "fields": {
+        "department": 2,
+        "room_number": 203,
+        "patient": null
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 1,
+    "fields": {
+        "balance": 1000.0,
+        "date": "2023-11-20T09:49:41.086Z",
+        "hospital": 1,
+        "patient": 1
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 2,
+    "fields": {
+        "balance": 2000.0,
+        "date": "2023-10-21T08:34:41.088Z",
+        "hospital": 1,
+        "patient": 2
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 3,
+    "fields": {
+        "balance": 3000.0,
+        "date": "2023-09-21T07:19:41.089Z",
+        "hospital": 1,
+        "patient": 3
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 4,
+    "fields": {
+        "balance": 4000.0,
+        "date": "2023-08-22T06:04:41.089Z",
+        "hospital": 1,
+        "patient": 4
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 5,
+    "fields": {
+        "balance": 5000.0,
+        "date": "2023-07-23T05:49:41.089Z",
+        "hospital": 1,
+        "patient": 5
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 6,
+    "fields": {
+        "balance": 6000.0,
+        "date": "2023-06-23T04:34:41.090Z",
+        "hospital": 1,
+        "patient": 6
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 7,
+    "fields": {
+        "balance": 7000.0,
+        "date": "2023-05-24T03:19:41.090Z",
+        "hospital": 1,
+        "patient": 7
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 8,
+    "fields": {
+        "balance": 8000.0,
+        "date": "2023-04-24T02:04:41.091Z",
+        "hospital": 1,
+        "patient": 8
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 9,
+    "fields": {
+        "balance": 9000.0,
+        "date": "2023-03-25T01:49:41.091Z",
+        "hospital": 1,
+        "patient": 9
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 10,
+    "fields": {
+        "balance": 10000.0,
+        "date": "2023-02-23T00:34:41.091Z",
+        "hospital": 1,
+        "patient": 10
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 11,
+    "fields": {
+        "balance": -1500.0,
+        "date": "2023-10-31T01:49:41.092Z",
+        "hospital": 1,
+        "patient": null
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 12,
+    "fields": {
+        "balance": -2500.0,
+        "date": "2023-10-05T04:34:41.092Z",
+        "hospital": 1,
+        "patient": null
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 13,
+    "fields": {
+        "balance": -3500.0,
+        "date": "2023-08-17T06:04:41.092Z",
+        "hospital": 1,
+        "patient": null
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 14,
+    "fields": {
+        "balance": -4500.0,
+        "date": "2023-07-21T07:19:41.093Z",
+        "hospital": 1,
+        "patient": null
+    }
+},
+{
+    "model": "db.accounting",
+    "pk": 15,
+    "fields": {
+        "balance": -5500.0,
+        "date": "2023-06-17T08:19:41.093Z",
+        "hospital": 1,
+        "patient": null
+    }
+},
+{
+    "model": "db.appointment",
+    "pk": 1,
+    "fields": {
+        "staff": 1,
+        "patient": 1,
+        "dateTime": "2023-11-21T11:11:41.094Z",
+        "detail": "Follow-up checkup"
+    }
+},
+{
+    "model": "db.appointment",
+    "pk": 2,
+    "fields": {
+        "staff": 1,
+        "patient": 2,
+        "dateTime": "2023-11-22T13:42:41.094Z",
+        "detail": "Blood test"
+    }
+},
+{
+    "model": "db.appointment",
+    "pk": 3,
+    "fields": {
+        "staff": 4,
+        "patient": 6,
+        "dateTime": "2023-11-23T15:12:41.095Z",
+        "detail": "MRI scan"
+    }
+},
+{
+    "model": "db.appointment",
+    "pk": 4,
+    "fields": {
+        "staff": 4,
+        "patient": 7,
+        "dateTime": "2023-11-24T17:34:41.095Z",
+        "detail": "Medication refill"
+    }
+},
+{
+    "model": "db.appointment",
+    "pk": 5,
+    "fields": {
+        "staff": 4,
+        "patient": 8,
+        "dateTime": "2023-11-25T18:59:41.095Z",
+        "detail": "Physical therapy"
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 1,
+    "fields": {
+        "name": "Paracetamol",
+        "price": 10.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 2,
+    "fields": {
+        "name": "Ibuprofen",
+        "price": 20.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 3,
+    "fields": {
+        "name": "Aspirin",
+        "price": 30.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 4,
+    "fields": {
+        "name": "Amoxicillin",
+        "price": 40.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 5,
+    "fields": {
+        "name": "Ciprofloxacin",
+        "price": 50.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 6,
+    "fields": {
+        "name": "Metronidazole",
+        "price": 60.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 7,
+    "fields": {
+        "name": "Benralizumab",
+        "price": 70.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 8,
+    "fields": {
+        "name": "Lansoprazole",
+        "price": 80.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 9,
+    "fields": {
+        "name": "Simvastatin",
+        "price": 90.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 10,
+    "fields": {
+        "name": "Atorvastatin",
+        "price": 100.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 11,
+    "fields": {
+        "name": "Metformin",
+        "price": 110.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 12,
+    "fields": {
+        "name": "Gliclazide",
+        "price": 120.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 13,
+    "fields": {
+        "name": "Amlodipine",
+        "price": 130.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 14,
+    "fields": {
+        "name": "Losartan",
+        "price": 140.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 15,
+    "fields": {
+        "name": "Bromhexine",
+        "price": 150.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 16,
+    "fields": {
+        "name": "Salbutamol",
+        "price": 160.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 17,
+    "fields": {
+        "name": "Prednisolone",
+        "price": 170.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 18,
+    "fields": {
+        "name": "Levothyroxine",
+        "price": 180.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 19,
+    "fields": {
+        "name": "Prenapril",
+        "price": 190.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.medicine",
+    "pk": 20,
+    "fields": {
+        "name": "Brexpiprazole",
+        "price": 200.0,
+        "amount": 100
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 1,
+    "fields": {
+        "staff": 4,
+        "patient": 6
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 2,
+    "fields": {
+        "staff": 4,
+        "patient": 7
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 3,
+    "fields": {
+        "staff": 4,
+        "patient": 8
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 4,
+    "fields": {
+        "staff": 4,
+        "patient": 9
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 5,
+    "fields": {
+        "staff": 4,
+        "patient": 10
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 6,
+    "fields": {
+        "staff": 1,
+        "patient": 1
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 7,
+    "fields": {
+        "staff": 1,
+        "patient": 2
+    }
+},
+{
+    "model": "db.prescription",
+    "pk": 8,
+    "fields": {
+        "staff": 1,
+        "patient": 3
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 1,
+    "fields": {
+        "medicine": 9,
+        "prescription": 1,
+        "amount": 30
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 2,
+    "fields": {
+        "medicine": 11,
+        "prescription": 2,
+        "amount": 90
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 3,
+    "fields": {
+        "medicine": 7,
+        "prescription": 3,
+        "amount": 50
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 4,
+    "fields": {
+        "medicine": 1,
+        "prescription": 4,
+        "amount": 21
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 5,
+    "fields": {
+        "medicine": 4,
+        "prescription": 4,
+        "amount": 7
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 6,
+    "fields": {
+        "medicine": 15,
+        "prescription": 4,
+        "amount": 20
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 7,
+    "fields": {
+        "medicine": 1,
+        "prescription": 5,
+        "amount": 21
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 8,
+    "fields": {
+        "medicine": 4,
+        "prescription": 5,
+        "amount": 7
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 9,
+    "fields": {
+        "medicine": 15,
+        "prescription": 5,
+        "amount": 20
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 10,
+    "fields": {
+        "medicine": 20,
+        "prescription": 6,
+        "amount": 21
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 11,
+    "fields": {
+        "medicine": 19,
+        "prescription": 6,
+        "amount": 7
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 12,
+    "fields": {
+        "medicine": 20,
+        "prescription": 7,
+        "amount": 20
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 13,
+    "fields": {
+        "medicine": 19,
+        "prescription": 7,
+        "amount": 21
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 14,
+    "fields": {
+        "medicine": 20,
+        "prescription": 8,
+        "amount": 20
+    }
+},
+{
+    "model": "db.prescriptionmedicine",
+    "pk": 15,
+    "fields": {
+        "medicine": 19,
+        "prescription": 8,
+        "amount": 20
+    }
+},
+{
+    "model": "db.disease",
+    "pk": 1,
+    "fields": {
+        "name": "Hypertension",
+        "patient": [
+            6
+        ]
+    }
+},
+{
+    "model": "db.disease",
+    "pk": 2,
+    "fields": {
+        "name": "Diabete",
+        "patient": [
+            7
+        ]
+    }
+},
+{
+    "model": "db.disease",
+    "pk": 3,
+    "fields": {
+        "name": "Asthma",
+        "patient": [
+            8
+        ]
+    }
+},
+{
+    "model": "db.disease",
+    "pk": 4,
+    "fields": {
+        "name": "Alzhimer",
+        "patient": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "db.disease",
+    "pk": 5,
+    "fields": {
+        "name": "Sundowner syndrome",
+        "patient": [
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "db.disease",
+    "pk": 6,
+    "fields": {
+        "name": "Flu",
+        "patient": [
+            9,
+            10
+        ]
+    }
+},
+{
+    "model": "db.treatment",
+    "pk": 1,
+    "fields": {
+        "name": "Lifestyle modification",
+        "disease": [
+            1,
+            2,
+            5
+        ],
+        "patience": [
+            4,
+            5,
+            7
+        ]
+    }
+},
+{
+    "model": "db.treatment",
+    "pk": 2,
+    "fields": {
+        "name": "Insulin injection",
+        "disease": [
+            2
+        ],
+        "patience": [
+            7
+        ]
+    }
+},
+{
+    "model": "db.treatment",
+    "pk": 3,
+    "fields": {
+        "name": "Inhaler therapy",
+        "disease": [
+            3
+        ],
+        "patience": [
+            8
+        ]
+    }
+},
+{
+    "model": "db.treatment",
+    "pk": 4,
+    "fields": {
+        "name": "Stimulate memory",
+        "disease": [
+            4
+        ],
+        "patience": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "db.treatment",
+    "pk": 5,
+    "fields": {
+        "name": "Activity in evening",
+        "disease": [
+            5
+        ],
+        "patience": [
+            4,
+            5
+        ]
+    }
+}
+]
