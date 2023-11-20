@@ -1,27 +1,84 @@
-* Hospital(__hospitalID__, name, address, phoneNumber)
+# IntercityRailwayReservationSystem
+HospitalManagementSystem is a proposed project for the "Database Systems for 
+Software and Knowledge Engineers" (01219231) course. This web application is 
+designed to manage and streamline various aspects of hospital operations through 
+an effective database system. The project's goal is to simulate a real-world 
+hospital management system, integrating a comprehensive database to handle various 
+operations and queries efficiently.
 
-* Department(__departmentID__, hospital, name)
 
-* Role(__roleID__, role)
+## Goals
+- Patient Management: Efficiently handle patient records, including medical history and treatments.
+- Appointment Scheduling: Enable easy booking, rescheduling, or cancellation of appointments.
+- Billing: Process and track billing.
+- Medical Records: Maintain records of disease.
+- Search Feature: Offer robust search functionality for quick data access.
 
-* Staff(__staffID__, name, role, department)
+## Installation
+**For macOS**:
 
-* Room(__roomNumber__, department)
+1) Clone the repository:
+```
+git clone https://github.com/ReggieReo/SuperDuperHospitle.git
+cd SuperDuperHospitle
+```
+2) Check if Python is installed:
+```
+python --version || python --version
+```
 
-* Patient(__patientID__, name, address, phoneNumber, department, staff, age, room)
+3) Create a virtual environment:
+```
+python -m venv venv
+. venv/bin/activate
+```
+4) Install dependencies:
+```
+pip install -r requirements.txt
+```
+5) Migrate the database:
+```
+python manage.py migrate
+```
+6) Load sample data:
+```
+python manage.py create_db
+```
+7) Run the server:
+```
+python manage.py runserver
+```
 
-* Accounting(__accountingID__, balance, date, hospital, patient)
+For Windows:
 
-* Appointment(__appointmentID__, staff, patient, date, detail)
+1) Clone the repository:
+```
+git clone https://github.com/ReggieReo/SuperDuperHospitle.git
+cd SuperDuperHospitle
+```
+2) Check if Python is installed
+```
+python --version || python --version
+```
+3) Create a virtual environment:
+```
+python -m venv venv
+.\venv\Scripts\activate
+```
+4) Install dependencies:
+```
+pip install -r requirements.txt
+```
+5) Migrate the database:
+```
+python manage.py migrate
+```
+6) Load sample data:
+```
+python manage.py create_db
 
-* Medicine(__medID__, name, price, amount)
-
-* Prescription(__prescriptionID__, patient, staff)
-
-Prescription contains Medicine
-* PrescriptionMedicine(__prescriptionID__, __medID__, amount)
-
-* Disease(__diseaseID__, name)
-
-one patient can have many PatientDisease
-* PatientDisease(__patientID__, __diseaseID__)
+```
+7) Run the server:
+```
+python manage.py runserver
+```
