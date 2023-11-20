@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <h2>{{ balance_sum }}</h2>
+    <h1 class="text-4xl my-8 font-semibold">Total: {{ balance_sum }}</h1>
     <table class="table">
         <thead>
             <tr class="font-semibold">
+                <th>Payer</th>
                 <th>Date</th>
                 <th>Balance</th>
             </tr>
@@ -12,6 +13,11 @@
         <tbody>
             {% for entry in queryset %}
             <tr class="{% cycle 'bg-base-200' 'bg-base-300' %}">
+            {% if entry.patient %}
+                <td>{{ entry.patient }}</td>
+                {% else %}
+                <td>Expense</td>
+                {% endif %}
                 <td>{{ entry.date }}</td>
                 <td>{{ entry.balance }}</td>
             </tr>
