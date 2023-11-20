@@ -17,6 +17,10 @@ class PatientForm(forms.ModelForm):
     )
     name = forms.CharField(widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+    address = forms.CharField(widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
+    phone_number = forms.CharField(widget=forms.TextInput(
+        attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
 
     class Meta:
         model = Patient

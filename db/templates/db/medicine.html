@@ -8,7 +8,7 @@
 {% block content %}
 {% include "base.html" %}
     <form hx-get="{% url "db:medicine" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
-        <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
               <h2 class="card-title">Medicine {{ form.name }}</h2>
                 <h2 class="card-title">Department {{  form.prescriptionmedicine__prescription__staff__department__name }}</h2>
@@ -17,7 +17,7 @@
           </div>
     </form>
     <div class="flex justify-center items-center mt-5">
-        <div class="overflow-x-24 card w-full mx-6 bg-base-100 shadow-xl">
+        <div class="overflow-x-24 card w-7/12 mx-6 bg-base-100 shadow-xl">
           <div class="table-container max-h-96 overflow-y-auto rounded-lg">
     <table class="table">
         <thead>
@@ -45,7 +45,7 @@
     </div>
     <form method="post" action="{% url "db:create_medicine" %}">
     {% csrf_token %}
-        <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center bg-base-200 ">
             <div class="card-body items-center text-center">
                 <h2 class="card-title">Add New Medicine</h2>
                 <h2 class="card-title">Medicine {{ create_form.name }}</h2>

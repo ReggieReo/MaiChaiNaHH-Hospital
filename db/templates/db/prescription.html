@@ -10,7 +10,7 @@
 <body>
 {% include "base.html" %}
     <form hx-get="{% url "db:prescription" %}" hx-target='body'  hx-trigger="input delay:500ms, change delay:500ms">
-        <div class="card w-7/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+        <div class="card w-7/12 bg-base-200 shadow-xl mx-auto mt-5 text-center">
             <div class="card-body items-center text-center">
                 {{ form.as_p }}
             <input type="submit" value="Submit" class="btn btn-active btn-secondary ml-5 mt-3"/>

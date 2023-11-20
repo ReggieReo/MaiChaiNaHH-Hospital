@@ -10,7 +10,7 @@
 <body>
 {% include "base.html" %}
 <form method="post" action="{% url "db:edit_appointment" appointment.id %}">
-    <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-5 text-center">
+    <div class="card w-8/12 bg-base-200 shadow-xl mx-auto mt-5 text-center">
         <div class="card-body items-center text-center">
                 {% csrf_token %}
             {{ form.as_p }}
