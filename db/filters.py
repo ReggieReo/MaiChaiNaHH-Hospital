@@ -4,34 +4,36 @@ from db.models import *
 from django_flatpickr.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
 
 
-# widget = forms.TextInput(attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}),
-
-
-def get_room_choice():
-    ROOM_CHOICES = {x.room_number: x.room_number for x in Room.objects.all()}
-    ROOM_CHOICES[''] = "any"
-    list_ = [(k, v) for k, v in ROOM_CHOICES.items()]
-    list_ = tuple(list_)
-    return list_
-
-
 class PatientFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr="icontains", label="Patient's Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
     staff__name = django_filters.CharFilter(lookup_expr="icontains", label="Doctor Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
-    room__room_number = django_filters.NumberFilter(widget=forms.Select(choices=get_room_choice()), label="Room")
+    room__room_number = django_filters.NumberFilter(label="Room")
     disease = django_filters.ModelChoiceFilter(queryset=Disease.objects.all(), label="Disease")
 
-    class Meta:
-        model = Patient
-        fields = ["name", "staff__name", "room__room_number", "department", "disease"]
+    def __init__(self, *args, **kwargs):
+        super(PatientFilter, self).__init__(*args, **kwargs)
+        self.filters['room__room_number'].field.widget = forms.Select(choices=self.get_room_choices())
+
+    def get_room_choices(self):
+        ROOM_CHOICES = {x.room_number: x.room_number for x in Room.objects.all()}
+        ROOM_CHOICES[''] = "any"
+        list_ = [(k, v) for k, v in ROOM_CHOICES.items()]
+        list_ = tuple(list_)
+        return list_
+
+
+class Meta:
+    model = Patient
+    fields = ["name", "staff__name", "room__room_number", "department", "disease"]
 
 
 class MedicineFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr="icontains", label="Medicine Name", widget=forms.TextInput(
         attrs={"class": "input input-bordered w-full max-w-xs mx-auto my-4 input-sm"}))
-    prescriptionmedicine__prescription__staff__department__name = django_filters.ModelChoiceFilter(queryset=Department.objects.all(), label="Department")
+    prescriptionmedicine__prescription__staff__department__name = django_filters.ModelChoiceFilter(
+        queryset=Department.objects.all(), label="Department")
 
     class Meta:
         model = Medicine
@@ -89,6 +91,7 @@ class PrescriptionFilter(django_filters.FilterSet):
 
 class StaffFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr="icontains", label="Name")
+
     class Meta:
         model = Staff
         fields = ["name", "role", "department"]
